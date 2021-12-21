@@ -2,7 +2,7 @@ module.exports = {
     coverageDirectory: 'coverage',
     moduleFileExtensions: ['ts', 'js', 'jsx', 'tsx', 'json', 'node'],
     preset: 'ts-jest',
-    testEnvironment: 'node',
+    testEnvironment: 'jsdom',
     transform: {
         '\\.[jt]s': 'babel-jest',
     },
