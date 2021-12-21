@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "ES2015",
+        "declaration": true,
+        "declarationDir": "./types",
+        "outDir": "./types",
+        "strict": true,
+        "baseUrl": "./",
+        "sourceMap": true,
+        "lib": ["es5", "ES6", "DOM"],
+        "types": ["jest"],
+        "esModuleInterop": true
+    },
+    "include": ["./src/**/*.ts"],
+    "exclude": ["node_modules"]
+}
