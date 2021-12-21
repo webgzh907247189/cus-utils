@@ -2,6 +2,7 @@
 node_modules
 /dist
 /coverage
+/coverage/report.json
 
 
 # local env files
