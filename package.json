@@ -1,6 +1,6 @@
 {
     "name": "@shuinfo/utils",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "",
     "main": "dist/utils.cjs.js",
     "module": "dist/utils.esm.js",
@@ -8,11 +8,6 @@
     "browser": "dist/utils.umd.js",
     "source": "src/index.ts",
     "typings": "types/index.d.ts",
-    "publishConfig": {
-        "tag": "1.1.0",
-        "registry": "https://packages.aliyun.com/5facfb4a2f8cc15c287b481b/npm/npm-registry/",
-        "access": "public"
-    },
     "scripts": {
         "clean": "rimraf dist/*",
         "build": "npm run clean && rollup --config rollup.config.js",
