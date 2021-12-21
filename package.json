@@ -8,6 +8,12 @@
     "browser": "dist/utils.umd.js",
     "source": "src/index.ts",
     "typings": "types/index.d.ts",
+    "private": true,
+    "publishConfig": {
+        "tag": "1.1.0",
+        "registry": "https://packages.aliyun.com/5facfb4a2f8cc15c287b481b/npm/npm-registry/",
+        "access": "public"
+    },
     "scripts": {
         "clean": "rimraf dist/*",
         "build": "npm run clean && rollup --config rollup.config.js",
@@ -28,7 +34,6 @@
         "@babel/runtime": "^7.14.8",
         "@babel/runtime-corejs3": "^7.15.3",
         "@commitlint/cli": "^15.0.0",
-        "@commitlint/config-conventional": "^15.0.0",
         "@rollup/plugin-babel": "^5.3.0",
         "@rollup/plugin-commonjs": "^20.0.0",
         "@rollup/plugin-node-resolve": "^13.0.4",
@@ -56,14 +61,6 @@
     },
     "dependencies": {
         "core-js": "^3.19.3"
-    },
-    "commitlint": {
-        "extends": ["@commitlint/config-conventional"]
-    },
-    "husky": {
-        "hooks": {
-          "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-        }
     },
     "lint-staged": {
         "src/**/*.{js,ts,tsx,vue}": [
