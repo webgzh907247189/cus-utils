@@ -8,3 +8,4 @@ prettier.config.js
 jest.config.js
 
 coverageUtil/report.json
+coverageUtil
