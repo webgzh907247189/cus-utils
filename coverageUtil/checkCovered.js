@@ -30,7 +30,7 @@ const resultObj = resultStrongList.reduce((result, item, idx) => {
     const val = item.strong;
 
     const [realVal] = val.split('%', 1);
-    if (realVal * 1 <= 96) {
+    if (realVal * 1 === 100) {
         isExitFlag = true;
     }
     result[(key = quiet)] = val;
