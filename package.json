@@ -6,6 +6,7 @@
     "module": "dist/utils.esm.js",
     "unpkg": "dist/utils.iife.js",
     "browser": "dist/utils.umd.js",
+    "jsnext:main": "dist/utils.esm.js",
     "source": "src/index.ts",
     "typings": "types/index.d.ts",
     "scripts": {
