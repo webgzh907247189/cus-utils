@@ -14,3 +14,4 @@ package-lock.json
 prettier.config.js
 rollup.config.js
 tsconfig.json
+distTypes

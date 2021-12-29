@@ -3,7 +3,7 @@ node_modules
 /dist
 /coverage
 /coverageUtil/report.json
-
+distTypes
 
 # local env files
 .env.local

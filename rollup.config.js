@@ -3,6 +3,7 @@ import resolve, { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
+import dtsBundle from 'rollup-plugin-dts-bundle';
 import path from 'path';
 import pkg from './package.json';
 
@@ -15,6 +16,13 @@ const conmmonPlugins = [
     typescript({
         useTsconfigDeclarationDir: true,
     }),
+    dtsBundle({
+        bundle: {
+            name: '@shuinfo/utils',
+            main: './distTypes/index.d.ts',
+            out: path.resolve(__dirname, 'types/index.d.ts')
+        }
+    })
 ];
 export default [
     {
