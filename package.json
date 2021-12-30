@@ -11,7 +11,7 @@
     "typings": "types/index.d.ts",
     "scripts": {
         "clean": "rimraf dist/*",
-        "build": "npm run clean && rollup --config rollup.config.js",
+        "build": "npm run clean & rollup --config rollup.config.js",
         "test": "make test",
         "coverage": "make coverage",
         "prepublishOnly": "make coverage && make checkCovered",
