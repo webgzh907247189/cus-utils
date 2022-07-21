@@ -1,17 +1,17 @@
-import { lowerCase } from '../src/index';
+import { getLowerCase } from '../src/index';
 
-describe('测试 lowerCase 文件', () => {
+describe('测试 getLowerCase 文件', () => {
 
-    it('测试 lowerCase 返回数组', () => {
+    it('测试 getLowerCase 返回', () => {
         const val = 1
         // @ts-ignore
-        const result = lowerCase(val);
+        const result = getLowerCase(val);
         expect(result).toEqual(undefined);
     });
 
-    it('测试 lowerCase 返回reject', async () => {
+    it('测试 getLowerCase 返回', async () => {
         const val = 'ABC'
-        const result = lowerCase(val);
+        const result = getLowerCase(val);
         expect(result).toEqual('abc');
     });
 });
