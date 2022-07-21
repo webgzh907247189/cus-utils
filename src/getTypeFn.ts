@@ -9,8 +9,8 @@ export const getTypeFn: GetTypeFnType = (type) => {
     };
 };
 
-const isObject = getTypeFn('Object');
-const isArray = getTypeFn('Array');
+export const isObject = getTypeFn('Object');
+export const isArray = getTypeFn('Array');
 
 export default {
     getTypeFn,

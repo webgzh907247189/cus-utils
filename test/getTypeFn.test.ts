@@ -1,4 +1,4 @@
-import { getTypeFn, getTypeObj } from '../src/index';
+import { getTypeFn, isObject, isArray, getTypeObj } from '../src/index';
 
 describe('测试 getTypeFn 文件', () => {
     it('测试 getTypeFn 检测布尔', () => {
@@ -13,7 +13,7 @@ describe('测试 getTypeFn 文件', () => {
     });
 
     it('测试 isArray 检测数组', () => {
-        const result = getTypeObj.isArray([]);
+        const result = isArray([]);
         expect(result).toBe(true);
     });
 });

@@ -6,7 +6,7 @@ declare module 'cus-utils' {
     export { default as compose } from 'cus-utils/compose';
     export { default as curry } from 'cus-utils/curry';
     export { default as getTypeObj } from 'cus-utils/getTypeFn';
-    export { getTypeFn } from 'cus-utils/getTypeFn';
+    export { getTypeFn, isArray, isObject } from 'cus-utils/getTypeFn';
     export { default as toFixedNumber } from 'cus-utils/toFixedNumber';
     export { default as lowerCase } from 'cus-utils/lowerCase';
 }
@@ -68,6 +68,8 @@ declare module 'cus-utils/getTypeFn' {
     import type { UnionType } from 'cus-utils/util.interface';
     type GetTypeFnType = (type: UnionType) => (target: unknown) => boolean;
     export const getTypeFn: GetTypeFnType;
+    export const isObject: (target: unknown) => boolean;
+    export const isArray: (target: unknown) => boolean;
     const _default: {
         getTypeFn: GetTypeFnType;
         isObject: (target: unknown) => boolean;
