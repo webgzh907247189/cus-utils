@@ -8,7 +8,7 @@ declare module 'cus-utils' {
     export { default as getTypeObj } from 'cus-utils/getTypeFn';
     export { getTypeFn, isArray, isObject } from 'cus-utils/getTypeFn';
     export { default as toFixedNumber } from 'cus-utils/toFixedNumber';
-    export { default as lowerCase } from 'cus-utils/lowerCase';
+    export { default as getLowerCase } from 'cus-utils/lowerCase';
 }
 
 declare module 'cus-utils/awaitWrap' {

@@ -8,4 +8,4 @@ export { getTypeFn, isArray, isObject } from './getTypeFn';
 
 export { default as toFixedNumber } from './toFixedNumber';
 
-export { default as lowerCase } from './lowerCase';
+export { default as getLowerCase } from './lowerCase';
