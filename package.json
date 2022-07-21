@@ -1,6 +1,6 @@
 {
     "name": "cus-utils",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "",
     "main": "dist/utils.cjs.js",
     "module": "dist/utils.esm.js",
@@ -9,6 +9,15 @@
     "jsnext:main": "dist/utils.esm.js",
     "source": "src/index.ts",
     "typings": "types/index.d.ts",
+    "keywords": [
+        "custom",
+        "utils",
+        "compose",
+        "test",
+        "rollup",
+        "ts",
+        "typescript"
+    ],
     "scripts": {
         "clean": "rimraf dist/*",
         "build": "npm run clean & rollup --config rollup.config.js",
