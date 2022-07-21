@@ -1,7 +1,7 @@
 {
     "name": "cus-utils",
     "version": "1.0.3",
-    "description": "",
+    "description": "custom utils",
     "main": "dist/utils.cjs.js",
     "module": "dist/utils.esm.js",
     "unpkg": "dist/utils.iife.js",
