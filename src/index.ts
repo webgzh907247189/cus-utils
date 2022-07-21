@@ -7,3 +7,5 @@ export { default as getTypeObj } from './getTypeFn';
 export { getTypeFn } from './getTypeFn';
 
 export { default as toFixedNumber } from './toFixedNumber';
+
+export { default as lowerCase } from './lowerCase';

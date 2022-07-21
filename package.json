@@ -1,6 +1,6 @@
 {
-    "name": "@shuinfo/utils",
-    "version": "1.0.3",
+    "name": "cus-utils",
+    "version": "1.0.0",
     "description": "",
     "main": "dist/utils.cjs.js",
     "module": "dist/utils.esm.js",

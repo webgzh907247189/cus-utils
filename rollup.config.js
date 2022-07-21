@@ -7,7 +7,7 @@ import dtsBundle from 'rollup-plugin-dts-bundle';
 import path from 'path';
 import pkg from './package.json';
 
-const banner = '/*!\n' + ` * shuxinInfo-FE-util.js v${pkg.version}\n` + ` * (c) 2021-${new Date().getFullYear()} zhonghao.ge\n` + ' * Released under the MIT License.\n' + ' */';
+const banner = '/*!\n' + ` * FE-util.js v${pkg.version}\n` + ` * (c) 2021-${new Date().getFullYear()} zhonghao.ge\n` + ' * Released under the MIT License.\n' + ' */';
 
 const conmmonPlugins = [
     nodeResolve({
@@ -18,7 +18,7 @@ const conmmonPlugins = [
     }),
     dtsBundle({
         bundle: {
-            name: '@shuinfo/utils',
+            name: 'cus-utils',
             main: './distTypes/index.d.ts',
             out: path.resolve(__dirname, 'types/index.d.ts')
         }

@@ -1,5 +1,5 @@
 // 字面量
-type UnionType = 'String' | 'Array' | 'Boolean' | 'Object' | 'Number' | 'Null' | 'Undefined' | 'Symbol' | 'BigInt';
+import type { UnionType } from './util.interface';
 
 type GetTypeFnType = (type: UnionType) => (target: unknown) => boolean;
 
