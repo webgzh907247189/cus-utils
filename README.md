@@ -1,4 +1,4 @@
-# util 所有 util函数 单元测试覆盖率100% (行覆盖率、函数覆盖率、分支覆盖率、语句覆盖率居均达到100%) 
+## util 所有 util函数 单元测试覆盖率100% (行覆盖率、函数覆盖率、分支覆盖率、语句覆盖率居均达到100%) 
 
 前端公用 util (内置 awaitWrap clearTimeId compose curry getTypeFn lowerCase toFixedNumber 前端常用的 util 方法)
 
