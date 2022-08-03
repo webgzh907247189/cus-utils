@@ -29,7 +29,7 @@
         "prepare": "husky install"
     },
     "author": "",
-    "license": "ISC",
+    "license": "MIT",
     "sideEffects": false,
     "devDependencies": {
         "@babel/plugin-transform-runtime": "^7.15.0",
