@@ -1,6 +1,6 @@
 {
     "name": "cus-utils",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "custom utils",
     "main": "dist/utils.cjs.js",
     "module": "dist/utils.esm.js",
@@ -27,6 +27,14 @@
         "lint-fix": "eslint . --ext .ts --fix",
         "prettier": "npx prettier --write .",
         "prepare": "husky install"
+    },
+    "homepage": "https://github.com/webgzh907247189/cus-utils#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/webgzh907247189/cus-utils.git"
+    },
+    "bugs": {
+        "url": "https://github.com/webgzh907247189/cus-utils/issues"
     },
     "author": "",
     "license": "MIT",
