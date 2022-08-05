@@ -87,6 +87,6 @@ declare module 'cus-utils/lowerCase' {
 }
 
 declare module 'cus-utils/util.interface' {
-    export type UnionType = 'String' | 'Array' | 'Boolean' | 'Object' | 'Number' | 'Null' | 'Undefined' | 'Symbol' | 'BigInt';
+    export type UnionType = 'String' | 'Array' | 'Boolean' | 'Object' | 'Number' | 'Null' | 'Undefined' | 'Symbol' | 'BigInt' | 'Function';
 }
 
