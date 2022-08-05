@@ -16,4 +16,15 @@ describe('测试 getTypeFn 文件', () => {
         const result = isArray([]);
         expect(result).toBe(true);
     });
+
+    it('测试 getTypeFn 检测函数', () => {
+        const isFn = getTypeFn('Function');
+        const result = isFn(() => {});
+        expect(result).toBe(true);
+    });
+    it('测试 getTypeFn 检测非函数', () => {
+        const isFn = getTypeFn('Function');
+        const result = isFn('');
+        expect(result).toBe(false);
+    });
 });
