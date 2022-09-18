@@ -1,6 +1,6 @@
 {
     "name": "cus-utils",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "custom utils",
     "main": "dist/utils.cjs.js",
     "module": "dist/utils.esm.js",

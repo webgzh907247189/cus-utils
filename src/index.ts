@@ -9,3 +9,5 @@ export { getTypeFn, isArray, isObject } from './getTypeFn';
 export { default as toFixedNumber } from './toFixedNumber';
 
 export { default as getLowerCase } from './lowerCase';
+
+export { default as parseUrlQuery } from './parseUrlQuery';
