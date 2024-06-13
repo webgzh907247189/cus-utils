@@ -11,3 +11,5 @@ export { default as toFixedNumber } from './toFixedNumber';
 export { default as getLowerCase } from './lowerCase';
 
 export { default as parseUrlQuery } from './parseUrlQuery';
+
+export { default as launchIDEConfig } from './launchIDEConfig';
