@@ -19,7 +19,7 @@ export const jsStr = `(function(options) {
                 throw new Error('请检查 babel-plugin-jsxfileattribute 插件是否开启');
             }
 
-            parentElement = currentElement!.parentElement;
+            parentElement = currentElement.parentElement;
 
             completeFilepath = parentElement.getAttribute('complete-filepath');
 
