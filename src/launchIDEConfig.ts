@@ -3,8 +3,8 @@ export const jsStr = `(function(options) {
     const SKIP = 'SKiP';
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    const documentClickEvent = (event: Event) => {
-        let completeFilepath = event.target!.getAttribute('complete-filepath');
+    const documentClickEvent = (event) => {
+        let completeFilepath = event.target.getAttribute('complete-filepath');
         let currentElement = event.target;
         let parentElement;
 
@@ -12,7 +12,7 @@ export const jsStr = `(function(options) {
             if (completeFilepath === SKIP) {
                 return;
             }
-            const nodeName = currentElement!.nodeName.toLowerCase();
+            const nodeName = currentElement.nodeName.toLowerCase();
             // console.log(nodeName, "nodeNamenodeName");
 
             if (nodeName === 'body') {
