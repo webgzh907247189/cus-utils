@@ -86,12 +86,14 @@ export const jsStr = `(function(options) {
     console.log('%c%s', 'color: red;font-size: 28px;background: #fff;', '已成功开启 launch IDE 功能');
 })(options ?? {})`;
 export default function launchIDEConfig(ideName?: string) {
-    if (ideName) {
-        return `(() => {
-            let ideName = '${ideName}';
-            let options = { ideName: ideName };
-            ${jsStr};
-        })()`;
-    }
-    return jsStr;
+    return ideName
+        ? `(() => {
+        let ideName = '${ideName}';
+        let options = { ideName: ideName };
+        ${jsStr};
+    })()`
+        : `(() => {
+        let options = {};
+        ${jsStr};
+    })()`;
 }
