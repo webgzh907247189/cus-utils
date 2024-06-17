@@ -49,6 +49,12 @@ export const jsStr = `(function (options) {
       "color: red;font-size: 28px;background: #fff;",
       "已成功开启 launch IDE 功能",
     );
+
+    console.log(
+      "%c%s",
+      "color: green;font-size: 16px;background: #fff;",
+      "按住 Option(Alt) 键 同时 点击页面元素, 即可唤起 IDE",
+    );
   })(options ?? {});
 `;
 export default function launchIDEConfig(ideName?: string) {
