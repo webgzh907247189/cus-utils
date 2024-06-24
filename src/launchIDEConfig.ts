@@ -20,12 +20,12 @@ export const jsStr = `(function (options) {
 
         parentElement = currentElement.parentElement;
 
-        completeFilepath = parentElement.getAttribute("complete-filepath");
+        completeFilepath = parentElement?.getAttribute?.("complete-filepath");
 
         currentElement = parentElement;
       }
 
-      if (completeFilepath !== SKIP && window.ISCLICK) {
+      if (completeFilepath !== SKIP && window.ISCLICK && completeFilepath) {
         console.log(completeFilepath, "completeFilepath");
 
         window.location.assign(ideName + "://file" + completeFilepath);
