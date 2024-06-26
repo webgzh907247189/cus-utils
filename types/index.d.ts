@@ -12,7 +12,7 @@ declare module 'cus-utils' {
     export { default as parseUrlQuery } from 'cus-utils/parseUrlQuery';
     export { default as launchIDEConfig } from 'cus-utils/launchIDEConfig';
     export { default as makeMap } from 'cus-utils/makeMap';
-    export { default as preTransformNode } from 'cus-utils/preTransformNode';
+    export { default as preTransformNodeList } from 'cus-utils/preTransformNode';
 }
 
 declare module 'cus-utils/awaitWrap' {
@@ -109,7 +109,7 @@ declare module 'cus-utils/makeMap' {
 declare module 'cus-utils/preTransformNode' {
     type TypePreTransformNode = (ast: {
         tag: string;
-        attrsList: {
+        attrsList?: {
             name: string;
             value: any;
         }[];
