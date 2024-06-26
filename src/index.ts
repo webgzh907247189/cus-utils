@@ -13,3 +13,7 @@ export { default as getLowerCase } from './lowerCase';
 export { default as parseUrlQuery } from './parseUrlQuery';
 
 export { default as launchIDEConfig } from './launchIDEConfig';
+
+export { default as makeMap } from './makeMap';
+
+export { default as preTransformNodeList } from './preTransformNode';

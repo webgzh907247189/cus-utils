@@ -11,6 +11,8 @@ declare module 'cus-utils' {
     export { default as getLowerCase } from 'cus-utils/lowerCase';
     export { default as parseUrlQuery } from 'cus-utils/parseUrlQuery';
     export { default as launchIDEConfig } from 'cus-utils/launchIDEConfig';
+    export { default as makeMap } from 'cus-utils/makeMap';
+    export { default as preTransformNode } from 'cus-utils/preTransformNode';
 }
 
 declare module 'cus-utils/awaitWrap' {
@@ -95,8 +97,29 @@ declare module 'cus-utils/parseUrlQuery' {
 }
 
 declare module 'cus-utils/launchIDEConfig' {
-    export const jsStr = "(function (options) {\n    const ideName = options.ideName ?? \"vscode\";\n    const SKIP = \"SKiP\";\n\n    const getLineColumn = (completeFilepath) => {\n      const [filePath, line, column] = completeFilepath.split(':')\n\n      return {\n        filePath,\n        line,\n        column\n      }\n    }\n\n    const formatLaunchIdeUrl = {\n      'webstorm': (completeFilepath) => {\n        const { line, column, filePath } = getLineColumn(completeFilepath)\n        return \"webstorm://open?file=\" + filePath + \"&line=\" + line + \"&column=\" + column\n      },\n      'vscode':  (completeFilepath) => {\n        return \"vscode://file\" + completeFilepath\n      },\n      'default':  (completeFilepath) => {\n        return ideName + \"://file\" + completeFilepath\n      },\n    }\n\n    let getUrlFn = options.userGetUrl ? options.userGetUrl : (formatLaunchIdeUrl[ideName] ?? formatLaunchIdeUrl['default'])\n\n    const OPENIDE = (completeFilepath) => {\n      const url = getUrlFn(completeFilepath)\n      window.location.assign(url);\n    }\n\n    const documentClickEvent = (event) => {\n      let completeFilepath = event.target.getAttribute(\"complete-filepath\");\n      let currentElement = event.target;\n      let parentElement;\n\n      while (completeFilepath === null) {\n        if (completeFilepath === SKIP) {\n          return;\n        }\n        const nodeName = currentElement.nodeName.toLowerCase();\n        // console.log(nodeName, \"nodeNamenodeName\");\n\n        if (nodeName === \"body\") {\n          throw new Error(\"\u8BF7\u68C0\u67E5 babel-plugin-jsxfileattribute \u63D2\u4EF6\u662F\u5426\u5F00\u542F\");\n        }\n\n        parentElement = currentElement.parentElement;\n\n        completeFilepath = parentElement?.getAttribute?.(\"complete-filepath\");\n\n        currentElement = parentElement;\n      }\n\n      if (completeFilepath !== SKIP && window.ISCLICK && completeFilepath) {\n        console.log(completeFilepath, \"completeFilepath\");\n\n        OPENIDE(completeFilepath)\n        window.ISCLICK = false;\n      }\n    };\n\n    document.addEventListener(\"click\", documentClickEvent);\n\n    const ALT = \"Alt\";\n    window.addEventListener(\"keydown\", (event) => {\n      if (event.altKey) {\n        window.ISCLICK = true;\n      }\n    });\n    window.addEventListener(\"keyup\", (event) => {\n      window.ISCLICK = false;\n    });\n    console.log(\n      \"%c%s\",\n      \"color: red;font-size: 28px;background: #fff;\",\n      \"\u5DF2\u6210\u529F\u5F00\u542F launch IDE \u529F\u80FD\",\n    );\n\n    console.log(\n      \"%c%s\",\n      \"color: green;font-size: 16px;background: #fff;\",\n      \"\u6309\u4F4F Option(Alt) \u952E \u540C\u65F6 \u70B9\u51FB\u9875\u9762\u5143\u7D20, \u5373\u53EF\u5524\u8D77 IDE\",\n    );\n  })(options ?? {});\n";
+    export const jsStr = "(function (options) {\n    const ideName = options.ideName ?? \"vscode\";\n    const SKIP = \"SKiP\";\n\n    const getLineColumn = (completeFilepath) => {\n      const [filePath, line, column] = completeFilepath.split(':')\n\n      return {\n        filePath,\n        line,\n        column\n      }\n    }\n\n    const formatLaunchIdeUrl = {\n      'webstorm': (completeFilepath) => {\n        const { line, column, filePath } = getLineColumn(completeFilepath)\n        return \"webstorm://open?file=\" + filePath + \"&line=\" + line + \"&column=\" + column\n      },\n      'vscode':  (completeFilepath) => {\n        return \"vscode://file\" + completeFilepath\n      },\n      'default':  (completeFilepath) => {\n        return ideName + \"://file\" + completeFilepath\n      },\n    }\n\n    let getUrlFn = options.userGetUrl ? options.userGetUrl : (formatLaunchIdeUrl[ideName] ?? formatLaunchIdeUrl['default']);\n\n    const OPENIDE = (completeFilepath) => {\n      const url = getUrlFn(completeFilepath)\n      window.location.assign(url);\n    }\n\n    const documentClickEvent = (event) => {\n      let completeFilepath = event.target.getAttribute(\"complete-filepath\");\n      let currentElement = event.target;\n      let parentElement;\n\n      while (completeFilepath === null) {\n        if (completeFilepath === SKIP) {\n          return;\n        }\n        const nodeName = currentElement.nodeName.toLowerCase();\n        // console.log(nodeName, \"nodeNamenodeName\");\n\n        if (nodeName === \"body\") {\n          throw new Error(\"\u8BF7\u68C0\u67E5 babel-plugin-jsxfileattribute \u63D2\u4EF6\u662F\u5426\u5F00\u542F\");\n        }\n\n        parentElement = currentElement.parentElement;\n\n        completeFilepath = parentElement?.getAttribute?.(\"complete-filepath\");\n\n        currentElement = parentElement;\n      }\n\n      if (completeFilepath !== SKIP && window.ISCLICK && completeFilepath) {\n        console.log(completeFilepath, \"completeFilepath\");\n\n        OPENIDE(completeFilepath)\n        window.ISCLICK = false;\n      }\n    };\n\n    document.addEventListener(\"click\", documentClickEvent);\n\n    const ALT = \"Alt\";\n    window.addEventListener(\"keydown\", (event) => {\n      if (event.altKey) {\n        window.ISCLICK = true;\n      }\n    });\n    window.addEventListener(\"keyup\", (event) => {\n      window.ISCLICK = false;\n    });\n    console.log(\n      \"%c%s\",\n      \"color: red;font-size: 28px;background: #fff;\",\n      \"\u5DF2\u6210\u529F\u5F00\u542F launch IDE \u529F\u80FD\",\n    );\n\n    console.log(\n      \"%c%s\",\n      \"color: green;font-size: 16px;background: #fff;\",\n      \"\u6309\u4F4F Option(Alt) \u952E \u540C\u65F6 \u70B9\u51FB\u9875\u9762\u5143\u7D20, \u5373\u53EF\u5524\u8D77 IDE\",\n    );\n  })(options ?? {});\n";
     export default function launchIDEConfig(ideName?: string, userGetUrl?: (completeFilepath: string) => string): string;
+}
+
+declare module 'cus-utils/makeMap' {
+    const makeMap: any;
+    export default makeMap;
+}
+
+declare module 'cus-utils/preTransformNode' {
+    type TypePreTransformNode = (ast: {
+        tag: string;
+        attrsList: {
+            name: string;
+            value: any;
+        }[];
+    }, b: {
+        filename: string;
+    }) => any;
+    const _default: {
+        preTransformNode: TypePreTransformNode;
+    }[];
+    export default _default;
 }
 
 declare module 'cus-utils/util.interface' {
