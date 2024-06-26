@@ -2,7 +2,6 @@ import makeMap from './makeMap';
 // 编译.vue 拿到 ast
 type TypePreTransformNode = (ast: { tag: string; attrsList?: { name: string; value: any }[] }, b: { filename: string }) => any;
 const preTransformNode: TypePreTransformNode = (ast, { filename }) => {
-    console.log('filenamefilename', ast);
     const currentPath = filename; // path.relative(__dirname, filename);
 
     const itemTag = ast.tag;
