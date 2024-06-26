@@ -2,6 +2,36 @@ export const jsStr = `(function (options) {
     const ideName = options.ideName ?? "vscode";
     const SKIP = "SKiP";
 
+    const getLineColumn = (completeFilepath) => {
+      const [filePath, line, column] = completeFilepath.split(':')
+
+      return {
+        filePath,
+        line,
+        column
+      }
+    }
+
+    const formatLaunchIdeUrl = {
+      'webstorm': (completeFilepath) => {
+        const { line, column, filePath } = getLineColumn(completeFilepath)
+        return "webstorm://open?file=" + filePath + "&line=" + line + "&column=" + column
+      },
+      'vscode':  (completeFilepath) => {
+        return "vscode://file" + completeFilepath
+      },
+      'default':  (completeFilepath) => {
+        return ideName + "://file" + completeFilepath
+      },
+    }
+
+    let getUrlFn = options.userGetUrl ? options.userGetUrl : (formatLaunchIdeUrl[ideName] ?? formatLaunchIdeUrl['default']);
+
+    const OPENIDE = (completeFilepath) => {
+      const url = getUrlFn(completeFilepath)
+      window.location.assign(url);
+    }
+
     const documentClickEvent = (event) => {
       let completeFilepath = event.target.getAttribute("complete-filepath");
       let currentElement = event.target;
@@ -28,7 +58,7 @@ export const jsStr = `(function (options) {
       if (completeFilepath !== SKIP && window.ISCLICK && completeFilepath) {
         console.log(completeFilepath, "completeFilepath");
 
-        window.location.assign(ideName + "://file" + completeFilepath);
+        OPENIDE(completeFilepath)
         window.ISCLICK = false;
       }
     };
@@ -57,8 +87,8 @@ export const jsStr = `(function (options) {
     );
   })(options ?? {});
 `;
-export default function launchIDEConfig(ideName?: string) {
-    const jsStr1 = `(()=>{let ideName = '${ideName}';let options = { ideName: ideName };${jsStr};})()`;
-    const jsStr2 = `(()=>{let options = {};${jsStr};})()`;
+export default function launchIDEConfig(ideName?: string, userGetUrl?: (completeFilepath: string) => string) {
+    const jsStr1 = `(() => { let ideName = '${ideName}'; let options = { ideName: ideName }; let userGetUrlObj = { ${userGetUrl} }; if (userGetUrlObj.userGetUrl) { options.userGetUrl = userGetUrlObj.userGetUrl; }; ${jsStr}; })()`;
+    const jsStr2 = `(() => { let options = {}; ${jsStr}; })()`;
     return ideName ? jsStr1 : jsStr2;
 }
