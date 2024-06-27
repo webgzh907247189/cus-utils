@@ -16,4 +16,4 @@ export { default as launchIDEConfig } from './launchIDEConfig';
 
 export { default as makeMap } from './makeMap';
 
-export { default as preTransformNodeList } from './preTransformNode';
+export { default as getPreTransformNode } from './preTransformNode';

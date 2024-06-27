@@ -1,9 +1,9 @@
-import { preTransformNodeList, makeMap } from '../src/index';
+import { getPreTransformNode, makeMap } from '../src/index';
 
 describe('测试 preTransformNode 文件', () => {
 
     it('测试 preTransformNode 能够匹配到 makeMap 的情况', () => {
-        const [{ preTransformNode }] = preTransformNodeList
+        const [{ preTransformNode }] = getPreTransformNode()
         const tag = 'div'
         const ast: { tag: string; attrsList: { name: string; value: any }[] } = {tag, attrsList: []}
         const filename = 'xxx'
@@ -22,7 +22,7 @@ describe('测试 preTransformNode 文件', () => {
     }); 
     
     it('测试 preTransformNode 不能够匹配到 makeMap 的情况', () => {
-        const [{ preTransformNode }] = preTransformNodeList
+        const [{ preTransformNode }] = getPreTransformNode()
         const tag = 'test11'
         const ast: { tag: string; attrsList: { name: string; value: any }[] } = {tag, attrsList: []}
         const filename = 'xxx'
@@ -42,10 +42,25 @@ describe('测试 preTransformNode 文件', () => {
     }); 
 
     it('测试 preTransformNode 是 component 的情况', () => {
-        const [{ preTransformNode }] = preTransformNodeList
+        const [{ preTransformNode }] = getPreTransformNode()
         const tag = 'component'
         const ast: { tag: string; attrsList?: { name: string; value: any }[] } = { tag }
         const filename = 'xxx'
+        const result = preTransformNode(ast, { filename });
+
+        // ast.attrsList.push({
+        //     name: 'data-dynamic-component',
+        //     value: true,
+        // });
+
+        expect(result).toEqual(ast);
+    }); 
+
+    it('测试 preTransformNode 能够匹配到 makeMap 的情况 并且', () => {
+        const [{ preTransformNode }] = getPreTransformNode({ isShowRelativerPath: true, projectRootPath: 'xxx' })
+        const tag = 'component'
+        const ast: { tag: string; attrsList?: { name: string; value: any }[] } = { tag }
+        const filename = 'xxx/yyy'
         const result = preTransformNode(ast, { filename });
 
         // ast.attrsList.push({
