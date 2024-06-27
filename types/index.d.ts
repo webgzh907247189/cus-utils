@@ -107,19 +107,27 @@ declare module 'cus-utils/makeMap' {
 }
 
 declare module 'cus-utils/preTransformNode' {
-    type TypePreTransformNode = (ast: {
-        tag: string;
-        attrsList?: {
-            name: string;
-            value: any;
-        }[];
-    }, b: {
-        filename: string;
-    }) => any;
-    const _default: {
-        preTransformNode: TypePreTransformNode;
+    const getPreTransformNode: (options?: {
+        isShowRelativerPath?: boolean;
+        projectRootPath?: string;
+    }) => {
+        preTransformNode: (ast: {
+            tag: string;
+            attrsList?: {
+                name: string;
+                value: any;
+            }[];
+        }, b: {
+            filename: string;
+        }) => {
+            tag: string;
+            attrsList?: {
+                name: string;
+                value: any;
+            }[] | undefined;
+        };
     }[];
-    export default _default;
+    export default getPreTransformNode;
 }
 
 declare module 'cus-utils/util.interface' {
