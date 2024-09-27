@@ -37,6 +37,11 @@ export const jsStr = `(function (options) {
       let currentElement = event.target;
       let parentElement;
 
+      // altKey 没有false， 不触发 唤起 ide 功能  ->  后续逻辑不在执行
+      if (!event.altKey) {
+        return
+      }
+
       while (completeFilepath === null) {
         if (completeFilepath === SKIP) {
           return;
@@ -45,7 +50,10 @@ export const jsStr = `(function (options) {
         // console.log(nodeName, "nodeNamenodeName");
 
         if (nodeName === "body") {
-          throw new Error("请检查 babel-plugin-jsxfileattribute 插件是否开启");
+          completeFilepath = null
+          return;
+          // 修改 之前 找不到 completeFilepath 就报错的逻辑
+          //   throw new Error("请检查 babel-plugin-jsxfileattribute 插件是否开启");
         }
 
         parentElement = currentElement.parentElement;
@@ -55,7 +63,11 @@ export const jsStr = `(function (options) {
         currentElement = parentElement;
       }
 
-      if (completeFilepath !== SKIP && window.ISCLICK && completeFilepath) {
+      if (completeFilepath !== SKIP && window.ISCLICK) {
+        if (!completeFilepath) {
+          console.wran('没有在点击的元素 以及 元素父级 找到 completeFilepath 属性')
+          return;
+        }
         console.log(completeFilepath, "completeFilepath");
 
         OPENIDE(completeFilepath)
